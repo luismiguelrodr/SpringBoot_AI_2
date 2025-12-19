@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+ja#!/usr/bin/env bash
 set -euo pipefail
 
 echo "Running devcontainer post-create installs with persistent caches..."
