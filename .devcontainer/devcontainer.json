@@ -1,0 +1,59 @@
+{
+  "name": "SpringBoot AI Devcontainer (persistent caches)",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot"
+      ]
+    }
+  },
+  "containerUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/install-packages.sh",
+  "mounts": [
+    "source=codespaces-apt-cache,target=/var/cache/apt,type=volume",
+    "source=codespaces-pip-cache,target=/home/vscode/.cache/pip,type=volume",
+    "source=codespaces-npm-cache,target=/home/vscode/.npm,type=volume",
+    "source=codespaces-m2,target=/home/vscode/.m2,type=volume"
+  ],
+  "remoteUser": "vscode"
+}
+{
+  "name": "Java Spring AI Microservices",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "codespace",
+  "workspaceFolder": "/workspace",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "installMaven": true,
+      "installGradle": true
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vmware.vscode-spring-boot",
+        "vscjava.vscode-java-pack",
+        "redhat.java",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "java.compile.nullAnalysis.mode": "automatic",
+        "spring-boot.ls.java.home": "/usr/local/sdkman/candidates/java/current"
+      }
+    }
+  },
+  "forwardPorts": [8080, 8081, 8082, 8083, 9090],
+  "postCreateCommand": "mvn clean compile -DskipTests",
+  "remoteUser": "vscode"
+}
