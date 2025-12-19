@@ -19,10 +19,7 @@
     "source=codespaces-npm-cache,target=/home/vscode/.npm,type=volume",
     "source=codespaces-m2,target=/home/vscode/.m2,type=volume"
   ],
-  "remoteUser": "vscode"
-}
-{
-  "name": "Java Spring AI Microservices",
+  "remoteUser": "vscode",
   "dockerComposeFile": "../docker-compose.yml",
   "service": "codespace",
   "workspaceFolder": "/workspace",
